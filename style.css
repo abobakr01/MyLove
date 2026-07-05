@@ -1,0 +1,360 @@
+:root {
+  color-scheme: dark;
+  --bg1: #08010f;
+  --bg2: #220827;
+  --text: #fff7fb;
+  --accent: #ff4d7a;
+  --accent2: #ffd27e;
+  --accent3: #ffe8c9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Cairo", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 77, 122, 0.28), transparent 24%),
+    radial-gradient(circle at 80% 10%, rgba(255, 210, 126, 0.2), transparent 22%),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+  overflow: hidden;
+}
+
+/* Prevent horizontal scrolling caused by large SVG/text on small screens */
+html, body { overflow-x: hidden; }
+
+.scene {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.3rem 1rem 2.3rem;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: min(94vw, 820px);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.7rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0.88;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.18);
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.heart-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0.2rem 0 1.2rem;
+  align-items: center;
+  height: 420px;
+}
+
+.heart-svg {
+  width: min(84vw, 760px);
+  height: auto;
+  animation: gentlePulse 3.6s ease-in-out infinite;
+  filter: drop-shadow(0 0 22px rgba(255, 77, 122, 0.34));
+  display: block;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+/* make sure SVG never exceeds its container width */
+.heart-svg { max-width: 100%; }
+
+.heart-wrap { overflow: visible; padding: 0 2rem; }
+
+.heart-glow,
+.heart-path,
+.arrow-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* New double-heart fills and gloss */
+.heart-fill {
+  filter: url(#softGlow);
+  stroke: none;
+}
+.heart-fill.left {
+  fill: url(#heartGradientA);
+  opacity: 0.98;
+}
+.heart-fill.right {
+  fill: url(#heartGradientB);
+  opacity: 0.95;
+}
+.gloss {
+  stroke: url(#glossGrad);
+  stroke-linecap: round;
+  opacity: 0;
+  animation: glossIn 1.6s ease forwards 1.8s;
+}
+.inner-oval {
+  fill: rgba(255,255,255,0.04);
+  transform-origin: 310px 300px;
+  opacity: 0;
+  animation: innerBloom 1.8s ease forwards 1.4s;
+}
+
+@keyframes glossIn {
+  to { opacity: 0.95; stroke-width: 8; }
+}
+
+@keyframes innerBloom {
+  0% { transform: scaleY(0.6) scaleX(0.8); opacity: 0; }
+  100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+}
+
+.heart-glow {
+  stroke: rgba(255, 255, 255, 0.24);
+  stroke-width: 24;
+  stroke-dasharray: 2400;
+  stroke-dashoffset: 2400;
+  opacity: 0;
+  animation: drawGlow 2.8s ease forwards 0.15s;
+}
+
+.heart-path {
+  stroke: url(#heartGradient);
+  stroke-width: 10;
+  stroke-dasharray: 2400;
+  stroke-dashoffset: 2400;
+  animation: drawHeart 3.2s ease forwards 0.15s;
+}
+
+.arrow-path {
+  stroke: url(#arrowGradient);
+  stroke-width: 10;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  filter: url(#softGlow);
+  animation: drawArrow 2.6s cubic-bezier(.2,.9,.2,1) forwards 0.9s;
+  stroke-linecap: round;
+}
+
+.dot {
+  fill: #ffe2ad;
+  opacity: 0;
+  animation: appear 0.45s ease forwards 2.6s;
+}
+
+.dot-end {
+  animation-delay: 2.9s;
+}
+
+/* Remove earlier transitional rule so letters stay visible immediately */
+
+.letter {
+  font-family: 'Playfair Display', Georgia, "Segoe UI", Tahoma, Geneva, Verdana, serif;
+  font-weight: 900;
+  font-size: 92px;
+  fill: #fffdf2;
+  letter-spacing: 3px;
+  opacity: 1;
+  text-shadow: 0 6px 22px rgba(0,0,0,0.5), 0 0 20px rgba(255,180,200,0.14);
+  paint-order: stroke fill;
+  stroke: rgba(0,0,0,0.38);
+  stroke-width: 2.2px;
+  transform-origin: center;
+  animation: letterPop 0.6s cubic-bezier(.2,.9,.2,1) forwards 0s;
+  pointer-events: none;
+}
+
+/* make quote use Cairo for Arabic */
+.quote { font-family: 'Cairo', Tahoma, sans-serif; }
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: radial-gradient(circle, #fff4c5, transparent 70%);
+  border-radius: 50%;
+  animation: float 4.2s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+@keyframes drawHeart {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawGlow {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 2400;
+  }
+  100% {
+    opacity: 0.7;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawArrow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes letterPop {
+  0% { opacity: 0; transform: scale(0.65) rotate(-8deg); }
+  60% { transform: scale(1.12) rotate(6deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Swirl rings styling */
+.swirl {
+  mix-blend-mode: screen;
+}
+.swirl-ring {
+  fill: none;
+  stroke: rgba(255,230,210,0.12);
+  stroke-width: 2.6;
+  stroke-dasharray: 6 18;
+  transform-origin: 0 0;
+  animation: swirlRotate 10s linear infinite;
+}
+.swirl-ring.r1 { animation-duration: 18s; }
+.swirl-ring.r2 { animation-duration: 14s; }
+.swirl-ring.r3 { animation-duration: 9s; }
+
+@keyframes swirlRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Small orbiting dots created by JS */
+.swirl-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff8da, #ffbfd0 60%);
+  box-shadow: 0 4px 12px rgba(255, 120, 160, 0.36);
+  transform-origin: 0 0;
+  pointer-events: none;
+  opacity: 0;
+  animation: orbit 4s linear infinite;
+}
+
+@keyframes orbit {
+  0% { opacity: 0; transform: rotate(var(--rot)) translate(var(--r)) scale(0.6); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(calc(var(--rot) + 360deg)) translate(var(--r)) scale(0.6); }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.8);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate3d(0, -24px, 0) scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes gentlePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 22px rgba(255, 77, 122, 0.34));
+  }
+  50% {
+    transform: scale(1.025);
+    filter: drop-shadow(0 0 34px rgba(255, 77, 122, 0.45));
+  }
+}
+
+@media (max-width: 640px) {
+  .quote {
+    padding: 0.9rem 1rem;
+    line-height: 1.6;
+    font-size: 1rem;
+    max-width: 92vw;
+  }
+
+  .eyebrow {
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+    margin-top: 0.2rem;
+  }
+
+  .heart-wrap {
+    height: auto;
+    padding: 0 0.6rem;
+    overflow: hidden; /* clip parts that would cause horizontal scroll */
+  }
+
+  .heart-svg {
+    width: 92vw;
+    max-width: 92vw;
+    height: auto;
+    display: block;
+  }
+
+  /* Make letters responsive and keep them visible on small screens */
+  .letter {
+    font-size: 44px !important;
+    stroke-width: 1px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.45), 0 0 12px rgba(255,180,200,0.12);
+    paint-order: stroke fill;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  /* Move M slightly left/down and D slightly right/up for mobile balance */
+  .letter-m {
+    transform: translate(-28px, 18px) scale(0.85);
+  }
+  .letter-d {
+    transform: translate(22px, -28px) scale(0.85);
+  }
+
+  /* Keep arrow full-size on mobile as requested (no shrinking) */
+  .arrow-group {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    transform: none;
+  }
+  .arrow-path {
+    stroke-width: 10; /* full stroke on mobile */
+  }
+
+  .swirl-dot { width: 6px; height: 6px; }
+  .sparkle { width: 5px; height: 5px; }
+}

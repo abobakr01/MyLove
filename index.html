@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>كُلُّ الطُّرُقِ تَنْتَهِي، إِلَّا الطَّرِيقَ إِلَيْكِ؛ فَهُوَ بِدَايَةُ السَّعَادَةِ.</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Playfair+Display:wght@400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main class="scene">
+        <div class="stars" aria-hidden="true"></div>
+        <section class="content">
+            <p class="eyebrow">مَا أَحْبَبْتُ فِي هَذِهِ الدُّنْيَا شَيْئًا كَمَا أَحْبَبْتُ أَنْ أَرَاكِ بِخَيْرٍ، وَأَنْ يَبْقَى قَلْبُكِ مُبْتَسِمًا، مَهْمَا أَثْقَلَتْكِ الْحَيَاةُ وَأَرْهَقَتْكِ الْأَيَّامُ.</p>
+            <div class="heart-wrap">
+                <svg class="heart-svg" viewBox="0 0 760 520" overflow="visible" preserveAspectRatio="xMidYMid meet"
+                    role="img" aria-label="قلب مزدوج مزخرف">
+                    <defs>
+                        <linearGradient id="heartGradientA" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff9cc3" />
+                            <stop offset="55%" stop-color="#ff5b8f" />
+                            <stop offset="100%" stop-color="#c40047" />
+                        </linearGradient>
+                        <linearGradient id="heartGradientB" x1="100%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#ffd6e6" />
+                            <stop offset="50%" stop-color="#ff8fb0" />
+                            <stop offset="100%" stop-color="#b8003a" />
+                        </linearGradient>
+                        <linearGradient id="glossGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.95)" />
+                            <stop offset="60%" stop-color="rgba(255,255,255,0.45)" />
+                            <stop offset="100%" stop-color="rgba(255,255,255,0.18)" />
+                        </linearGradient>
+                        <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#ffe8c9" />
+                            <stop offset="50%" stop-color="#ffd27e" />
+                            <stop offset="100%" stop-color="#ff9e1b" />
+                        </linearGradient>
+                        <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="8" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <marker id="arrowhead" markerWidth="18" markerHeight="18" refX="12" refY="9" orient="auto">
+                            <path d="M0,0 L18,9 L0,18 z" fill="#ff9e1b" />
+                        </marker>
+                        <linearGradient id="letterGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#fffdf2" />
+                            <stop offset="50%" stop-color="#ffd7e6" />
+                            <stop offset="100%" stop-color="#ff9eb8" />
+                        </linearGradient>
+                        <filter id="letterGlow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Left heart -->
+                    <g class="heart-group">
+                        <path class="heart-fill left"
+                            d="M210 320 C170 280, 120 220, 160 170 C200 120, 260 120, 300 170 C340 120, 400 120, 440 170 C480 220, 430 280, 390 320 C350 360, 270 420, 210 320 Z" />
+                        <!-- Right overlapping heart -->
+                        <path class="heart-fill right"
+                            d="M410 320 C370 280, 320 220, 360 170 C400 120, 460 120, 500 170 C540 220, 490 280, 450 320 C410 360, 330 420, 410 320 Z" />
+
+                        <!-- Gloss highlights -->
+                        <path class="gloss" d="M230 200 C260 170, 300 165, 330 190" stroke-width="12"
+                            stroke-linecap="round" fill="none" />
+                        <path class="gloss" d="M380 190 C410 160, 450 155, 480 180" stroke-width="10"
+                            stroke-linecap="round" fill="none" />
+
+                        <!-- Soft inner glow shapes -->
+                        <ellipse class="inner-oval" cx="310" cy="300" rx="140" ry="55" />
+                    </g>
+
+                    <!-- Elegant multi-curve arrow passing through at a tilt -->
+                    <g class="arrow-group">
+                        <path class="arrow-path"
+                            d="M10 420 C120 340, 200 320, 290 280 C360 250, 420 220, 520 170 C560 150, 600 140, 620 130"
+                            marker-end="url(#arrowhead)" />
+                    </g>
+
+                    <!-- Decorative swirl rings (base for JS dots) -->
+                    <g class="swirl" transform="translate(310,310)">
+                        <path class="swirl-ring r1" d="M-180,0 A180,180 0 1,1 180,0 A180,180 0 1,1 -180,0" />
+                        <path class="swirl-ring r2" d="M-140,20 A140,140 0 1,1 140,20 A140,140 0 1,1 -140,20" />
+                        <path class="swirl-ring r3" d="M-100,40 A100,100 0 1,1 100,40 A100,100 0 1,1 -100,40" />
+                    </g>
+
+                    <!-- Letters M and D (decorative, placed at arrow ends) -->
+                    <!-- Arrow starts at (10,420). Place M just left of start with small horizontal gap and slightly below -->
+                    <text class="letter letter-m" x="-90" y="500" text-anchor="end" font-size="92"
+                        fill="url(#letterGrad)" filter="url(#letterGlow)">M</text>
+                    <!-- Arrow tip at (620,130). Place D centered above tip with same vertical gap -->
+                    <text class="letter letter-d" x="730" y="100" text-anchor="middle" font-size="92"
+                        fill="url(#letterGrad)" filter="url(#letterGlow)">D</text>
+                </svg>
+            </div>
+            <blockquote class="quote">
+                أَنْتِ الدَّعْوَةُ الَّتِي أَكْرَمَنِي اللَّهُ بِإِجَابَتِهَا، وَالسَّكِينَةُ الَّتِي أَلْقَاهَا فِي
+                قَلْبِي، وَالنِّعْمَةُ الَّتِي أَحْمَدُ اللَّهَ عَلَيْهَا مَعَ كُلِّ شُرُوقٍ وَغُرُوبٍ.
+            </blockquote>
+        </section>
+    </main>
+
+    <script src="scrept.js"></script>
+</body>
+
+</html>
